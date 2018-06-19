@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class VirtualPetShelter {
 	private int wasteLevel;
-	private int litterBox;
+	private int litterBox=50;
 	private int oilLevel;
 	private int happiness;
 	private int thirst;
@@ -18,8 +18,10 @@ public class VirtualPetShelter {
 	}
 
 	public void oilAllPet() {
-		for (RoboticPet pet : roboPet.values()) {
-			pet.oilPet();
+		for (VirtualPet pet : petsAmok.values()) {
+			if(pet instanceof RoboticDog) {
+				((RoboticPet) pet).oilPet();
+			}
 		}
 	}
 
@@ -28,10 +30,9 @@ public class VirtualPetShelter {
 	}
 
 	public void cleanLitterBox() {
-		for (OrganicPet pet : orgPet.values()) {
-			pet.cleanShelterBox();
+		for (VirtualPet pet : petsAmok.values()) {
 			if(pet instanceof OrganicCat) {
-				litterBox = litterBox -10;
+				((OrganicPet) pet).cleanShelterBox();
 			}
 		}
 	}
@@ -41,10 +42,9 @@ public class VirtualPetShelter {
 	}
 
 	public void cleanAllCages() {
-		for (OrganicPet pet : orgPet.values()) {
-			pet.cleanOneCage();
+		for (VirtualPet pet : petsAmok.values()) {
 			if(pet instanceof OrganicPet) {
-				wasteLevel = wasteLevel - 10;
+				((OrganicPet) pet).cleanOneCage();
 			}
 		}
 	}
@@ -63,19 +63,17 @@ public class VirtualPetShelter {
 	}
 
 	public void feedAllPets() {
-		for (OrganicPet pet : orgPet.values()) {
-			pet.feedPet();
+		for (VirtualPet pet : petsAmok.values()) {
 			if(pet instanceof OrganicPet) {
-				hunger = hunger-10;
+				((OrganicPet) pet).feedPet();
 			}
 		}
 	}
 
 	public void waterAllPets() {
-		for (OrganicPet pet : orgPet.values()) {
-			pet.waterPet();
+		for (VirtualPet pet : petsAmok.values()) {
 			if(pet instanceof OrganicPet) {
-				thirst = thirst - 10;
+				((OrganicPet) pet).waterPet();
 			}
 		}
 	}
@@ -99,12 +97,18 @@ public class VirtualPetShelter {
 	public void tickAllPets() {
 		for (VirtualPet pet : petsAmok.values()) {
 			pet.tick();
+			if(pet instanceof OrganicPet || pet instanceof RoboticPet) {
+				((VirtualPet) pet).tick();
+			}
 		}
 	}
 
 	public void walkAllDogs() {
 	for(VirtualPet pet : petsAmok.values()) {
 		pet.walk();
+		if(pet instanceof OrganicDog || pet instanceof RoboticDog) {
+			((VirtualPet) pet).walk();
+		}
 	}
 		
 	}

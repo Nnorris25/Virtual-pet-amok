@@ -11,7 +11,7 @@ public class RoboticDog extends RoboticPet {
 		String status = "";
 		status += "oil level: " + getOilLevel();
 		status += "\n";
-		status += "Happiness: " + getHappiness();
+		status += "Happiness: " + happiness;
 		return status;
 	}
 

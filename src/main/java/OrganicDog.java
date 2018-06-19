@@ -10,13 +10,13 @@ public class OrganicDog extends OrganicPet  {
 
 	public String getStatus() {
 		String status = "";
-		status += "thirst: " + getThirst();
+		status += "thirst: " + thirst;
 		status += "\n";
-		status += "hunger: " + getHunger();
+		status += "hunger: " + hunger;
 		status += "\n";
-		status += "Happiness: " + getHappiness();
+		status += "Happiness: " + happiness;
 		status += "\n";
-		status += "waste level: " + getWasteLevel();
+		status += "waste level: " + wasteLevel;
 		return status;
 	}
 
