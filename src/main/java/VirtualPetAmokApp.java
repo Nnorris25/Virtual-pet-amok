@@ -1,9 +1,11 @@
 import java.util.Scanner;
 
 public class VirtualPetAmokApp extends VirtualPet {
-	public VirtualPetAmokApp(String petName, String petDescription, int health, int happiness) {
-		super(petName, petDescription, health, happiness, hunger, thirst, oilLevel, happiness);
+	
 
+	public VirtualPetAmokApp(String petName, String petDescription, int health, int happiness) {
+		super(petName, petDescription, health, happiness);
+		// TODO Auto-generated constructor stub
 	}
 
 	static Scanner input = new Scanner(System.in);
@@ -14,11 +16,11 @@ public class VirtualPetAmokApp extends VirtualPet {
 		OrganicDog dog2 = new OrganicDog("John", "Vicious shihtzu", 50, 50, 50, 50, 50);
 		OrganicDog dog3 = new OrganicDog("Kane", "Bulldog", 50, 50, 50, 50, 50);
 
-		OrganicCat cat1 = new OrganicCat("Maulik", "The worlds favorite cat", 50, 50, 50, 50, 50, 50);
-		OrganicCat cat2 = new OrganicCat("Charles", "Just your average cat", 50, 50, 50, 50, 50, 50);
-		OrganicCat cat3 = new OrganicCat("Jimmy", "Still just your average cat", 50, 50, 50, 50, 50, 50);
+		OrganicCat cat1 = new OrganicCat("Maulik", "The worlds favorite cat", 50, 50, 50, 50, 50);
+		OrganicCat cat2 = new OrganicCat("Charles", "Just your average cat", 50, 50, 50, 50, 50);
+		OrganicCat cat3 = new OrganicCat("Jimmy", "Still just your average cat", 50, 50, 50, 50, 50);
 
-		RoboticDog roboDog1 = new RoboticDog("Richard", "aspires to take overt the world", 50, 50, 50);
+		RoboticDog roboDog1 = new RoboticDog("Richard", "aspires to take overt the world", 50,50, 50);
 		RoboticDog roboDog2 = new RoboticDog("Jack", "manufactured in china", 50, 50, 50);
 
 		pets.addPet(dog1);

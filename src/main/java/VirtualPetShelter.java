@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VirtualPetShelter {
-	private static int wasteLevel;
+	private int wasteLevel;
 	private int litterBox;
 	private int oilLevel;
 	private int happiness;
@@ -17,9 +17,8 @@ public class VirtualPetShelter {
 		return petsAmok.values();
 	}
 
-
 	public void oilAllPet() {
-		for(VirtualPet pet: roboPet.values()) {
+		for (RoboticPet pet : roboPet.values()) {
 			pet.oilPet();
 		}
 	}
@@ -29,8 +28,11 @@ public class VirtualPetShelter {
 	}
 
 	public void cleanLitterBox() {
-		for(VirtualPet pet: orgPet.values()) {
+		for (OrganicPet pet : orgPet.values()) {
 			pet.cleanShelterBox();
+			if(pet instanceof OrganicCat) {
+				litterBox = litterBox -10;
+			}
 		}
 	}
 
@@ -39,8 +41,11 @@ public class VirtualPetShelter {
 	}
 
 	public void cleanAllCages() {
-		for(VirtualPet pet: orgPet.values()) {
+		for (OrganicPet pet : orgPet.values()) {
 			pet.cleanOneCage();
+			if(pet instanceof OrganicPet) {
+				wasteLevel = wasteLevel - 10;
+			}
 		}
 	}
 
@@ -58,16 +63,20 @@ public class VirtualPetShelter {
 	}
 
 	public void feedAllPets() {
-		for (VirtualPet pet : orgPet.values()) {
+		for (OrganicPet pet : orgPet.values()) {
 			pet.feedPet();
-			hunger = hunger - 10;
+			if(pet instanceof OrganicPet) {
+				hunger = hunger-10;
+			}
 		}
 	}
 
 	public void waterAllPets() {
-		for (VirtualPet pet : orgPet.values()) {
+		for (OrganicPet pet : orgPet.values()) {
 			pet.waterPet();
-			thirst = thirst - 10;
+			if(pet instanceof OrganicPet) {
+				thirst = thirst - 10;
+			}
 		}
 	}
 
@@ -79,7 +88,7 @@ public class VirtualPetShelter {
 		status += "\n";
 		status += "oil level: " + oilLevel;
 		status += "\n";
-		status +="litter box level: " + litterBox;
+		status += "litter box level: " + litterBox;
 		status += "\n";
 		status += "Happiness: " + happiness;
 		status += "\n";
@@ -87,18 +96,17 @@ public class VirtualPetShelter {
 		return status;
 	}
 
-	public void walkAllDogs() {
-		for (VirtualPet pet : petsAmok.values()) {
-			pet.walkDog();
-			happiness = happiness +10;
-		}
-	}
-
-	
 	public void tickAllPets() {
 		for (VirtualPet pet : petsAmok.values()) {
 			pet.tick();
 		}
+	}
+
+	public void walkAllDogs() {
+	for(VirtualPet pet : petsAmok.values()) {
+		pet.walk();
+	}
+		
 	}
 
 }
